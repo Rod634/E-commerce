@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "M/W3ogQGYsB86mM7SpKkhNdAQDDil2AaLeva1BrQ1jTZvIGBgWwHmmM3OmntZoOYtalvnPdrN/q8tpwUCqxugQ==",
+  "success": true,
+  "projectFilePath": "D:\\PROJETOs\\E-commerce MVC\\Ecommerce\\Ecommerce.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rodri\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}
