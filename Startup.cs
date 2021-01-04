@@ -58,7 +58,10 @@ namespace Ecommerce
             });
 
             //Cria o banco se o mesmo não existir 
-            serviceProvider.GetService<AplicationContext>().Database.EnsureCreated();
+            serviceProvider
+                .GetService<AplicationContext>()
+                .Database
+                .Migrate();
         }
 
         
