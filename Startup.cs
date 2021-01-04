@@ -23,11 +23,19 @@ namespace Ecommerce
         {
             services.AddControllersWithViews();
 
+            //Adicionando conexão com o banco de dados local
+
             string ConnectionString = Configuration.GetConnectionString("Default");
             
             services.AddDbContext<AplicationContext>(options =>
                 options.UseSqlServer(ConnectionString)
             );
+
+            //injetando dependência do banco
+
+            services.AddTransient<IDatabaseContext, DatabaseContext>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,12 +66,7 @@ namespace Ecommerce
             });
 
             //Cria o banco se o mesmo não existir 
-            serviceProvider
-                .GetService<AplicationContext>()
-                .Database
-                .Migrate();
+            serviceProvider.GetService<IDatabaseContext>().iniciarDb();
         }
-
-        
     }
 }

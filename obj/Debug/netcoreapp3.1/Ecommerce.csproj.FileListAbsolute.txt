@@ -96,3 +96,4 @@ D:\PROJETOs\E-commerce MVC\Ecommerce\bin\Debug\netcoreapp3.1\Humanizer.dll
 D:\PROJETOs\E-commerce MVC\Ecommerce\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 D:\PROJETOs\E-commerce MVC\Ecommerce\obj\Debug\netcoreapp3.1\Ecommerce.csproj.CoreCompileInputs.cache
 D:\PROJETOs\E-commerce MVC\Ecommerce\obj\Debug\netcoreapp3.1\Ecommerce.MvcApplicationPartsAssemblyInfo.cache
+D:\PROJETOs\E-commerce MVC\Ecommerce\bin\Debug\netcoreapp3.1\livros.json

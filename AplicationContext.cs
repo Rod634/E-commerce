@@ -14,6 +14,8 @@ namespace Ecommerce
         {
             base.OnModelCreating(modelBuilder);
 
+            //Montando as migrations 
+
             modelBuilder.Entity<Produto>().HasKey(t => t.Id);
 
             modelBuilder.Entity<Pedido>().HasKey(t => t.Id);
