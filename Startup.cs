@@ -1,4 +1,5 @@
 
+using Ecommerce.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -31,11 +32,11 @@ namespace Ecommerce
                 options.UseSqlServer(ConnectionString)
             );
 
-            //injetando dependência do banco
+            //injetando dependências
 
             services.AddTransient<IDatabaseContext, DatabaseContext>();
 
-
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
