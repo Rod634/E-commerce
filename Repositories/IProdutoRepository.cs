@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Ecommerce.Models;
+using System.Collections.Generic;
 
 namespace Ecommerce.Repositories
 {
-    interface IProdutoRepository
+    public interface IProdutoRepository
     {
         void SalvarMudancas(List<Livro> livros);
+        IList<Produto> GetProdutos();
     }
 }

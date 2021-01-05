@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ecommerce.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Controllers
 {
     public class StoreController : Controller
     {
+        private readonly IProdutoRepository produtoRepository;
+
+        public StoreController(IProdutoRepository produtoRepository)
+        {
+            this.produtoRepository = produtoRepository;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View(produtoRepository.GetProdutos());
         }
         public IActionResult Blog()
         {
