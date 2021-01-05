@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Repositories
 {
-    public class ItemPedidoRepository : BaseRepository<ItemPedido>, IItemPedidoRepository
+    public class CadastroRepository : BaseRepository<Cadastro>, ICadastroRepository
     {
-        public ItemPedidoRepository(AplicationContext contexto) : base(contexto)
+        public CadastroRepository(AplicationContext contexto) : base(contexto)
         {
-
         }
     }
 }

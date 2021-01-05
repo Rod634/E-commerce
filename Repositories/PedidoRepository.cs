@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Repositories
 {
-    public class PedidoRepository : BaseRepository<Pedido>
+    public class PedidoRepository : BaseRepository<Pedido>, IPedidoRepository
     {
         public PedidoRepository(AplicationContext contexto) : base(contexto)
         {
