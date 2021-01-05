@@ -290,6 +290,12 @@
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
+                        <!-- Criação do loop para o carrosel de 4 itens-->
+                        @{
+                            // pega os quatro primeiros itens do objeto
+                            var CarroselProducts = Model.Take(4);
+                        }
+
                         <div class="product-item">
                             <div class="pi-pic">
                                 <img src="img/products/women-1.jpg" alt="">
