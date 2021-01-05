@@ -5,22 +5,15 @@ using System.Linq;
 
 namespace Ecommerce.Repositories
 {
-    public class ProdutoRepository : IProdutoRepository
+    public class ProdutoRepository : BaseRepository<Produto>, IProdutoRepository
     {
-        private readonly AplicationContext contexto;
-        private readonly DbSet<Produto> dbset;
-
-        public ProdutoRepository(AplicationContext contexto)
+        public ProdutoRepository(AplicationContext contexto) : base(contexto)
         {
-            this.contexto = contexto;
-            dbset = contexto.Set<Produto>();
         }
-
         public IList<Produto> GetProdutos()
         {
             return dbset.ToList();
         }
-
         public void SalvarMudancas(List<Livro> livros)
         {
             foreach (var livro in livros)
@@ -30,7 +23,6 @@ namespace Ecommerce.Repositories
                     dbset.Add(new Produto(livro.Codigo, livro.Nome, livro.Preco));
                 }
             }
-
             contexto.SaveChanges();
         }
 
