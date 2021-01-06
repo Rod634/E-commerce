@@ -32,8 +32,7 @@ namespace Ecommerce
                 options.UseSqlServer(ConnectionString)
             );
 
-            //injetando dependências
-
+            //injetando referências
             services.AddTransient<IDatabaseContext, DatabaseContext>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
@@ -65,7 +64,7 @@ namespace Ecommerce
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Store}/{action=Index}/{id?}");
+                    pattern: "{controller=Store}/{action=Index}/{Codigo?}");
             });
 
             //Cria o banco se o mesmo não existir 
