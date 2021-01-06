@@ -62,10 +62,15 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
-        public IActionResult ShoppingCart()
+        public IActionResult ShoppingCart(string codigo)
         {
+            if (!string.IsNullOrEmpty(codigo))
+            {
+                PedidoRepository.AddItem(codigo);
+            }
+
             Pedido pedido = PedidoRepository.GetPedido();
-            return View(pedido);
+            return View(pedido.Itens);
         }
         
     }

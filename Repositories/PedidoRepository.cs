@@ -1,7 +1,8 @@
 ﻿using Ecommerce.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
+
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,7 +29,11 @@ namespace Ecommerce.Repositories
         {
             var pedidoId = GetPedidoId();
             //Verifica se esse pedido já existe na sessão
-            var pedido = dbset.Where(p => p.Id == pedidoId).SingleOrDefault();
+            var pedido = dbset
+                .Include(p => p.Itens)
+                .ThenInclude(i => i.Produto)
+                .Where(p => p.Id == pedidoId)
+                .SingleOrDefault();
 
             //Se não existir cria um novo
             if(pedido == null)
@@ -48,7 +53,38 @@ namespace Ecommerce.Repositories
         /// <param name="PedidoID"></param>
         private void SetPedidoId(int? PedidoID)
         {
-            contextAccessor.HttpContext.Session.SetInt32("PedidoId", PedidoID);
+            contextAccessor.HttpContext.Session.SetInt32("PedidoId", (int)PedidoID);
+        }
+
+        public void AddItem(string codigo)
+        {
+            //Verifica se há produto com o código passado
+            var produto = contexto.Set<Produto>()
+                .Where(p => p.Codigo == codigo)
+                .SingleOrDefault();
+
+            //caso não exista lança uma exceção 
+            if(produto == null)
+            {
+                throw new ArgumentException("Produto não encontrado");
+            }
+
+            //Pega o pedido da sessão
+            var pedido = GetPedido();
+
+            //Verifica se o item está no pedido e se está na mesma sessão
+            var itemPedido = contexto.Set<ItemPedido>()
+                .Where(p => p.Produto.Codigo == codigo
+                && p.Pedido.Id == pedido.Id)
+                .SingleOrDefault();
+
+            if(itemPedido == null)
+            {
+                itemPedido = new ItemPedido(pedido, produto, 1, produto.Preco);
+                contexto.Set<ItemPedido>().Add(itemPedido);
+            }
+
+            contexto.SaveChanges();
         }
     }
 }
