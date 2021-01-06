@@ -23,6 +23,10 @@ namespace Ecommerce
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //Adiionando distribuidor de cache
+            services.AddDistributedMemoryCache();
+            //adicionar sessão
+            services.AddSession();
 
             //Adicionando conexão com o banco de dados local
 
@@ -55,6 +59,9 @@ namespace Ecommerce
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            //usando session
+            app.UseSession();
 
             app.UseRouting();
 
