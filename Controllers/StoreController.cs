@@ -32,7 +32,8 @@ namespace Ecommerce.Controllers
         }
         public IActionResult CheckOut()
         {
-            return View();
+            Pedido pedido = PedidoRepository.GetPedido();
+            return View(pedido);
         }
         public IActionResult Contat()
         {

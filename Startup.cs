@@ -1,4 +1,3 @@
-
 using Ecommerce.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,13 +36,6 @@ namespace Ecommerce
             services.AddDbContext<AplicationContext>(options =>
                 options.UseSqlServer(ConnectionString)
             );
-
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => false; // Default is true, make it false
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
 
             //injetando referências
             services.AddTransient<IDatabaseContext, DatabaseContext>();
