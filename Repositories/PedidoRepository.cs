@@ -19,41 +19,42 @@ namespace Ecommerce.Repositories
         /// <summary>
         /// Metódo que retorna o ID da sessão
         /// </summary>
-        /// <returns>IDsession</returns>
+        /// <returns>IDsession</returns
         private int? GetPedidoId()
         {
-            return contextAccessor.HttpContext.Session.GetInt32("PedidoId");
+            return contextAccessor.HttpContext.Session.GetInt32("pedidoId");
         }
 
         public Pedido GetPedido()
         {
             var pedidoId = GetPedidoId();
             //Verifica se esse pedido já existe na sessão
-            var pedido = dbset
-                .Include(p => p.Itens)
-                .ThenInclude(i => i.Produto)
-                .Where(p => p.Id == pedidoId)
-                .SingleOrDefault();
-
-            //Se não existir cria um novo
-            if(pedido == null)
+            if(pedidoId != null)
             {
-                pedido = new Pedido();
+                return dbset
+               .Include(p => p.Itens)
+               .ThenInclude(i => i.Produto)
+               .Where(p => p.Id == pedidoId)
+               .SingleOrDefault();
+            }
+            else
+            {
+                //Se não existir cria um novo
+                var pedido = new Pedido();
                 dbset.Add(pedido);
                 contexto.SaveChanges();
-                SetPedidoId(pedidoId);
+                SetPedidoId(pedido.Id);
+                return pedido;
             }
-
-            return pedido;
         }
 
         /// <summary>
         /// Metódo que seta o Id da sessão
         /// </summary>
         /// <param name="PedidoID"></param>
-        private void SetPedidoId(int? PedidoID)
+        private void SetPedidoId(int pedidoId)
         {
-            contextAccessor.HttpContext.Session.SetInt32("PedidoId", (int)PedidoID);
+            contextAccessor.HttpContext.Session.SetInt32("pedidoId", pedidoId);
         }
 
         public void AddItem(string codigo)

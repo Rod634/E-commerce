@@ -24,10 +24,15 @@ namespace Ecommerce
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            //Adiionando distribuidor de cache
-            services.AddDistributedMemoryCache();
             //adicionar sessão
             services.AddSession();
+            //Adiionando distribuidor de cache
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(opt =>
+            {
+                opt.Cookie.IsEssential = true;
+            });
 
             //Adicionando conexão com o banco de dados local
 
