@@ -1,12 +1,13 @@
 [
   {
     "Codigo": "001",
-    "Nome": "ASP.NET Core MVC",
+    "Nome": "Moletom",
+    "Cor": "Verde",
     "Preco": 49.90
   },
   {
     "Codigo": "002",
-    "Nome": "Construct 2",
+    "Nome": "Moletom mangas",
     "Preco": 49.90
   },
   {

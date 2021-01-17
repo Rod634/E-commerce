@@ -42,7 +42,7 @@ namespace Ecommerce
                 options.UseSqlServer(ConnectionString)
             );
 
-            //injetando referências
+            //injetando Dependências
             services.AddTransient<IDatabaseContext, DatabaseContext>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();

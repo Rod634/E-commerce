@@ -31,7 +31,7 @@
 
     <!-- Header Section Begin -->
     <header class="header-section">
-        <div class="header-top">
+        @*<div class="header-top">
             <div class="container">
                 <div class="ht-left">
                     <div class="mail-service">
@@ -65,13 +65,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
         <div class="container">
             <div class="inner-header">
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a asp-action="Index">
                                 <img src="~/img/logo.png" alt="">
                             </a>
                         </div>
@@ -165,27 +165,19 @@
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
-                        <li><a href="./shop.html">Shop</a></li>
-                        <li>
-                            <a href="#">Collection</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Men's</a></li>
-                                <li><a href="#">Women's</a></li>
-                                <li><a href="#">Kid's</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li class="active"><a asp-action="Index">Home</a></li>
+                        <li><a asp-action="Shop">Shop</a></li>
+                        <li><a asp-action="Blog">Blog</a></li>
+                        <li><a asp-action="Contact">Contact</a></li>
                         <li>
                             <a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                                <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                <li><a href="./check-out.html">Checkout</a></li>
-                                <li><a href="./faq.html">Faq</a></li>
-                                <li><a href="./register.html">Register</a></li>
-                                <li><a href="./login.html">Login</a></li>
+                                <li><a asp-action="BlogDetails">Blog Details</a></li>
+                                <li><a asp-action="ShoppingCart">Shopping Cart</a></li>
+                                <li><a asp-action="CheckOut">Checkout</a></li>
+                                <li><a asp-action="Faq">Faq</a></li>
+                                <li><a asp-action="Register">Register</a></li>
+                                <li><a asp-action="Login">Login</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -222,10 +214,9 @@
                     <div class="footer-widget">
                         <h5>Information</h5>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Serivius</a></li>
+                            <li><a asp-action="Faq">About Us</a></li>
+                            <li><a asp-action="CheckOut">Checkout</a></li>
+                            <li><a asp-action="Contact">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -233,10 +224,10 @@
                     <div class="footer-widget">
                         <h5>My Account</h5>
                         <ul>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Shopping Cart</a></li>
-                            <li><a href="#">Shop</a></li>
+                            <li><a asp-action="Profile">My Account</a></li>
+                            <li><a asp-action="Contact">Contact</a></li>
+                            <li><a asp-action="ShoppingCart">Shopping Cart</a></li>
+                            <li><a asp-action="Shop">Shop</a></li>
                         </ul>
                     </div>
                 </div>
